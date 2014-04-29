@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shopping Cart</h1>
+
+<table id="cart" class="table table-striped">
+  <tr>
+    <th>Product</th>
+    <th>Qty</th>
+    <th class="price">Unit Price</th>
+    <th class="price">Full Price</th>
+  </tr>
+  <% for line_item in @cart.line_items %>
+    <tr class="<%= cycle :odd, :even %>">
+      <td><%=h line_item.product.name %></td>
+      <td class="qty"><%= line_item.quantity %></td>
+      <td class="price"><%= number_to_currency(line_item.unit_price, unit: 'rub', format: '%n %u') %></td>
+      <td class="price"><%= number_to_currency(line_item.full_price, unit: 'rub', format: '%n %u') %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td class="total price" colspan="4">
+      Total: <%= number_to_currency @cart.total_price, unit: 'rub', format: '%n %u' %>
+    </td>
+  </tr>
+</table>

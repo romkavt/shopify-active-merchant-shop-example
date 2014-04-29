@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Store</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap_and_overrides", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="">Yandex.Money Rails Store</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "View/Edit Products", products_path %></li>
+          <li><%= link_to "View/Edit Orders", orders_path %></li>
+          <li><%= link_to "Buy Products", { :controller => "categories", :action => "show", :id => 1 } %></li>
+          <% if session[:cart_id] %>
+            <li><%= link_to "Current Cart", { :controller => "carts", :action => "show", :id => session[:cart_id] } %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+    <div class="span3">
+      <h2>About</h2>
+      <p>This is a test store/cart application that demonstrates how to integrate Yandex.Money into a rails application using Active Merchant.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

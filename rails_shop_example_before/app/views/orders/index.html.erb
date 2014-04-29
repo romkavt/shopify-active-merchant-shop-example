@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer Name</th>
+      <th>Total</th>
+      <th>YM Order Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= order.card_holder_name %></td>
+        <td><%= order.total %></td>
+        <td><%= order.order_number %></td>
+        <td>
+          <%= link_to 'Destroy', order_path(order), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

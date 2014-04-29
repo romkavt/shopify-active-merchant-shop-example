@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 9.99
+  total: 9.99
+
+two:
+  id: 9.99
+  total: 9.99
